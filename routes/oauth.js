@@ -66,6 +66,18 @@ router.get('/user/token', function (req, res) {
 // return the forge authenticate url
 router.get('/user/authenticate', function (req, res) {
   console.log('/user/authenticate');
+  console.log('======================================');
+  console.log('req.body');
+  console.log(req.body)
+  console.log('  \n\n');
+  console.log('req.session');
+  console.log(req.session);
+  console.log('  \n\n');
+  console.log('req.data');
+  console.log(req.data);
+  console.log('======================================');
+
+
   req.session.csrf = cryptiles.randomString(24);
 
   console.log('using csrf: ' + req.session.csrf);
@@ -80,7 +92,7 @@ router.get('/user/authenticate', function (req, res) {
     '&state=' + req.session.csrf +
     '&scope=' + config.scopeInternal.join(" ");
   
-  console.log(`Oauth URL = ${URL}`);
+  console.log(`Oauth URL = ${url}`);
   res.end(url);
 });
 
