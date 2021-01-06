@@ -43,6 +43,7 @@ router.get('/user/logoff', function (req, res) {
 });
 
 router.get('/api/forge/clientID', function (req, res) {
+  console.log('/api/forge/clientID');
   res.json({
     'ForgeClientId': config.credentials.client_id
   });
@@ -51,6 +52,7 @@ router.get('/api/forge/clientID', function (req, res) {
 // return the public token of the current user
 // the public token should have a limited scope (read-only)
 router.get('/user/token', function (req, res) {
+  console.log('/user/token');
   console.log('Getting user token'); // debug
   var tokenSession = new token(req.session);
   // json returns empty object if the entry values are undefined
@@ -63,11 +65,11 @@ router.get('/user/token', function (req, res) {
 
 // return the forge authenticate url
 router.get('/user/authenticate', function (req, res) {
+  console.log('/user/authenticate');
   req.session.csrf = cryptiles.randomString(24);
 
   console.log('using csrf: ' + req.session.csrf);
 
-  console.log('/user/authenticate');
 
   // redirect the user to this page
   var url =
@@ -77,11 +79,14 @@ router.get('/user/authenticate', function (req, res) {
     '&redirect_uri=' + config.callbackURL +
     '&state=' + req.session.csrf +
     '&scope=' + config.scopeInternal.join(" ");
+  
+  console.log(`Oauth URL = ${URL}`);
   res.end(url);
 });
 
 // wait for Autodesk callback (oAuth callback)
 router.get('/api/forge/callback/oauth', function (req, res) {
+  
   var csrf = req.query.state;
 
   console.log('stored csrf: ' + req.session.csrf);
