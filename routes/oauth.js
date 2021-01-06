@@ -52,8 +52,26 @@ router.get('/api/forge/clientID', function (req, res) {
 // return the public token of the current user
 // the public token should have a limited scope (read-only)
 router.get('/user/token', function (req, res) {
-  console.log('/user/token');
-  console.log('Getting user token'); // debug
+  console.log('/user/token \n\n');
+
+  console.log('======================================');
+  console.log('req');
+  console.log(req)
+  console.log('  \n\n');
+  console.log('req.body');
+  console.log(req.body)
+  console.log('  \n\n');
+  console.log('req.session');
+  console.log(req.session);
+  console.log('  \n\n');
+  console.log('req.query (every querystrings in URL appears here)');   //every querystrings in URL appears here
+  console.log(req.query);
+  console.log('  \n\n');
+  console.log('req.data');
+  console.log(req.data);
+  console.log('======================================');
+
+  console.log('Getting user token\n\n'); // debug
   var tokenSession = new token(req.session);
   // json returns empty object if the entry values are undefined
   // so let's avoid that
@@ -110,6 +128,9 @@ router.get('/api/forge/callback/oauth', function (req, res) {
   console.log('req.session');
   console.log(req.session);
   console.log('  \n\n');
+  console.log('req.query (every querystrings in URL appears here)');   //every querystrings in URL appears here
+  console.log(req.query);
+  console.log('  \n\n');
   console.log('req.data');
   console.log(req.data);
   console.log('======================================');
@@ -125,7 +146,7 @@ router.get('/api/forge/callback/oauth', function (req, res) {
     return;
   }
 
-  var code = req.query.code;  //every querystrings in 
+  var code = req.query.code;  
   if (!code) {
     res.redirect('/');
   }
