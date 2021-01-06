@@ -86,7 +86,7 @@ router.get('/user/authenticate', function (req, res) {
 
 // wait for Autodesk callback (oAuth callback)
 router.get('/api/forge/callback/oauth', function (req, res) {
-  
+  console.log('/api/forge/callback/oauth');
   var csrf = req.query.state;
 
   console.log('stored csrf: ' + req.session.csrf);
@@ -106,7 +106,7 @@ router.get('/api/forge/callback/oauth', function (req, res) {
 
   // first get a full scope token for internal use (server-side)
   var req1 = new forgeSDK.AuthClientThreeLegged(config.credentials.client_id, config.credentials.client_secret, config.callbackURL, config.scopeInternal);
-  console.log(code);
+  console.log(`Auth callback code = ${code}`);
   req1.getToken(code)
     .then(function (internalCredentials) {
 

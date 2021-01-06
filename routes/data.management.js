@@ -17,6 +17,7 @@ var fs = require('fs');
 var config = require('./config');
 
 var forgeSDK = require('forge-apis');
+const { Console } = require('console');
 
 function getFolderId(projectId, versionId, req) {
     return new Promise(function (_resolve, _reject) {
@@ -155,7 +156,7 @@ function attachVersionToAnotherVersion(projectId, versionId, attachmentVersionId
 }
 
 router.get('/attachments', function (req, res) {
-
+    console.log('/attachments');
     var tokenSession = new token(req.session);
 
     var href = decodeURIComponent(req.query.href);
@@ -206,6 +207,7 @@ router.get('/attachments', function (req, res) {
 
 // Download a specific attachment of an item version
 router.get('/attachments/:attachment', function (req, res) {
+    console.log('/attachments/:attachment');
 
     var tokenSession = new token(req.session);
 
@@ -246,6 +248,7 @@ router.get('/attachments/:attachment', function (req, res) {
 
 // Delete the specific attachment relationship between two item versions
 router.delete('/attachments/:attachment', function (req, res) {
+    console.log('/attachments/:attachment');
     var tokenSession = new token(req.session);
 
     var href = decodeURIComponent(req.header('wip-href'));
@@ -268,6 +271,7 @@ router.delete('/attachments/:attachment', function (req, res) {
 
 // Download a specific attachment of an item version
 router.get('/files/:file', function (req, res) {
+    console.log('/files/:file');
     var tokenSession = new token(req.session);
 
     var href = decodeURIComponent(req.params.file);
@@ -311,6 +315,7 @@ router.get('/files/:file', function (req, res) {
 });
 
 router.post('/files', jsonParser, function (req, res) {
+    console.log('/files');
     // Uploading a file to A360
     // 1) Check if the file already exists
     // 2) If not then create a new item and upload the file in it
@@ -605,6 +610,7 @@ function attachmentSpecData(versionId, projectId) {
 // our A360 account
 /////////////////////////////////////////////////////////////////
 router.get('/treeNode', function (req, res) {
+    console.log('/treeNode');
     var href = decodeURIComponent(req.query.href);
     console.log("treeNode for " + href);
 
@@ -749,6 +755,7 @@ function getIdAndVersion(urn64) {
 // Expose an end point through which the client can check if our
 // mongo db contains info about the selected body
 router.get('/fusionData/:urn/:path', function (req, res) {
+    console.log('/fusionData/:urn/:path');
     var urn = req.params.urn;
     var path = req.params.path;
 

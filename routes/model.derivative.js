@@ -19,6 +19,7 @@ var forgeSDK = require('forge-apis');
 // Model Derivative API
 /////////////////////////////////////////////////////////////////
 router.get('/formats', function (req, res) {
+    console.log('/formats');
     var derivatives = new forgeSDK.DerivativesApi();
 
     var tokenSession = new token(req.session);
@@ -38,6 +39,7 @@ router.get('/formats', function (req, res) {
 // available for this file
 /////////////////////////////////////////////////////////////////
 router.get('/manifests/:urn', function (req, res) {
+    console.log('/manifests/:urn');
     var derivatives = new forgeSDK.DerivativesApi();
 
     var tokenSession = new token(req.session);
@@ -52,6 +54,7 @@ router.get('/manifests/:urn', function (req, res) {
 });
 
 router.delete('/manifests/:urn', function (req, res) {
+    console.log('/manifests/:urn');
     var tokenSession = new token(req.session);
 
     var derivatives = new forgeSDK.DerivativesApi();
@@ -74,6 +77,7 @@ router.delete('/manifests/:urn', function (req, res) {
 // the guid of the avilable models in the file
 /////////////////////////////////////////////////////////////////
 router.get('/metadatas/:urn', function (req, res) {
+    console.log('/metadatas/:urn');
     var derivatives = new forgeSDK.DerivativesApi();
 
     var tokenSession = new token(req.session);
@@ -92,6 +96,7 @@ router.get('/metadatas/:urn', function (req, res) {
 // guid inside the file with the provided urn
 /////////////////////////////////////////////////////////////////
 router.get('/hierarchy', function (req, res) {
+    console.log('/hierarchy');
     var derivatives = new forgeSDK.DerivativesApi();
 
     var tokenSession = new token(req.session);
@@ -114,6 +119,7 @@ router.get('/hierarchy', function (req, res) {
 // with the given guid and file urn
 /////////////////////////////////////////////////////////////////
 router.get('/properties', function (req, res) {
+    console.log('/properties');
     var derivatives = new forgeSDK.DerivativesApi();
 
     var tokenSession = new token(req.session);
@@ -132,6 +138,7 @@ router.get('/properties', function (req, res) {
 // file format which are associated with the model file
 /////////////////////////////////////////////////////////////////
 router.get('/download', function (req, res) {
+    console.log('/download');
     var derivatives = new forgeSDK.DerivativesApi();
 
     var tokenSession = new token(req.session);
@@ -153,6 +160,7 @@ router.get('/download', function (req, res) {
 // file format for our file
 /////////////////////////////////////////////////////////////////
 router.post('/export', jsonParser, function (req, res) {
+    console.log('/export');
     //env, token, urn, format, rootFileName, fileExtType, advanced
     var item = {
         "type": req.body.format
