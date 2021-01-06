@@ -67,6 +67,9 @@ router.get('/user/token', function (req, res) {
   console.log('req.query (every querystrings in URL appears here)');   //every querystrings in URL appears here
   console.log(req.query);
   console.log('  \n\n');
+  console.log('req.route'); 
+  console.log(req.route);
+  console.log('  \n\n');
   console.log('req.data');
   console.log(req.data);
   console.log('======================================');

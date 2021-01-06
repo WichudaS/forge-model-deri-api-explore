@@ -611,6 +611,7 @@ function attachmentSpecData(versionId, projectId) {
 /////////////////////////////////////////////////////////////////
 router.get('/treeNode', function (req, res) {
     console.log('/treeNode');
+    
     var href = decodeURIComponent(req.query.href);
     console.log("treeNode for " + href);
 
