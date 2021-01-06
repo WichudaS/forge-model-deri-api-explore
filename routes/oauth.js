@@ -99,6 +99,22 @@ router.get('/user/authenticate', function (req, res) {
 // wait for Autodesk callback (oAuth callback)
 router.get('/api/forge/callback/oauth', function (req, res) {
   console.log('/api/forge/callback/oauth');
+
+  console.log('======================================');
+  console.log('req');
+  console.log(req)
+  console.log('  \n\n');
+  console.log('req.body');
+  console.log(req.body)
+  console.log('  \n\n');
+  console.log('req.session');
+  console.log(req.session);
+  console.log('  \n\n');
+  console.log('req.data');
+  console.log(req.data);
+  console.log('======================================');
+
+
   var csrf = req.query.state;
 
   console.log('stored csrf: ' + req.session.csrf);
@@ -109,7 +125,7 @@ router.get('/api/forge/callback/oauth', function (req, res) {
     return;
   }
 
-  var code = req.query.code;
+  var code = req.query.code;  //every querystrings in 
   if (!code) {
     res.redirect('/');
   }
