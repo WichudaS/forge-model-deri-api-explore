@@ -55,8 +55,8 @@ router.get('/user/token', function (req, res) {
   console.log('/user/token \n\n');
 
   console.log('======================================');
-  console.log('req');
-  console.log(req)
+  // console.log('req');
+  // console.log(req)
   console.log('  \n\n');
   console.log('req.body');
   console.log(req.body)
@@ -119,8 +119,8 @@ router.get('/api/forge/callback/oauth', function (req, res) {
   console.log('/api/forge/callback/oauth');
 
   console.log('======================================');
-  console.log('req');
-  console.log(req)
+  // console.log('req');
+  // console.log(req)
   console.log('  \n\n');
   console.log('req.body');
   console.log(req.body)
