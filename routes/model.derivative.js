@@ -104,6 +104,8 @@ router.get('/hierarchy', function (req, res) {
     derivatives.getModelviewMetadata(req.query.urn, req.query.guid, {}, tokenSession.getInternalOAuth(), tokenSession.getInternalCredentials())
         .then(function (metaData) {
             if (metaData.body.data) {
+                console.log('model metadata =');
+                console.log(metaData);
                 res.json(metaData.body);
             } else {
                 res.json({result: 'accepted'});
@@ -126,6 +128,8 @@ router.get('/properties', function (req, res) {
 
     derivatives.getModelviewProperties(req.query.urn, req.query.guid, {}, tokenSession.getInternalOAuth(), tokenSession.getInternalCredentials())
         .then(function (data) {
+          console.log('model property data =');
+          console.log(JSON.stringify(data));
             res.json(data.body);
         })
         .catch(function (error) {
