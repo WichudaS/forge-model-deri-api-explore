@@ -33,7 +33,7 @@ app.set('trust proxy', 1);
 /*
 app.use(enforce.HTTPS({ 
   trustProtoHeader: true,
-  trustXForwardedHostHeader: true
+  trustXForwardedHostHPeader: true
 }));
 */
 
